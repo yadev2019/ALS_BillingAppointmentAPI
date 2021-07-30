@@ -18,3 +18,13 @@ D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_B
 D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\obj\Debug\netcoreapp3.1\ALS_BillingAppointmentAPI.dll
 D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\obj\Debug\netcoreapp3.1\ALS_BillingAppointmentAPI.pdb
 D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\obj\Debug\netcoreapp3.1\ALS_BillingAppointmentAPI.genruntimeconfig.cache
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\bin\Debug\netcoreapp3.1\Swashbuckle.Core.dll
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\obj\Debug\netcoreapp3.1\ALS_BillingAppointmentAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\BBTEC\Code\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\ALS_BillingAppointmentAPI\obj\Debug\netcoreapp3.1\ALS_BillingAppointmentAPI.csproj.CopyComplete
