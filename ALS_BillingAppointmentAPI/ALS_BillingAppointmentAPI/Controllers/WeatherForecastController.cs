@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ALS_BillingAppointmentAPI.DB;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,9 @@ namespace ALS_BillingAppointmentAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+
+        private readonly K2_Billing_AppointmentContext db;
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -18,9 +22,10 @@ namespace ALS_BillingAppointmentAPI.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, K2_Billing_AppointmentContext db)
         {
             _logger = logger;
+            this.db = db;
         }
 
         [HttpGet]
@@ -34,6 +39,12 @@ namespace ALS_BillingAppointmentAPI.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [HttpPost("Getall")]
+        public IActionResult Getall()
+        {
+            var res = db.TbRBa.ToList();
+            return Ok(res);
         }
     }
 }
