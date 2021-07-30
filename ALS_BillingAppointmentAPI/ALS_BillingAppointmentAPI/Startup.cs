@@ -32,7 +32,7 @@ namespace ALS_BillingAppointmentAPI
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<K2_Billing_AppointmentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings")));
+            services.AddDbContext<K2_Billing_AppointmentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
 
             services.AddSwaggerGen(swagger =>
             {
