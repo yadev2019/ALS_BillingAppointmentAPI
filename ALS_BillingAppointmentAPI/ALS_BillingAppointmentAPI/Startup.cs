@@ -33,9 +33,9 @@ namespace ALS_BillingAppointmentAPI
                 //This is to generate the Default UI of Swagger Documentation  
                 swagger.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Version = "v1",
-                    Title = "Membership-API",
-                    Description = "ASP.NET Core 3.1 REST-API  -v1.0.9"
+                    Version = "V1",
+                    Title = "ALS_BillingAppointmentAPI",
+                    Description = "ASP.NET Core 3.1 REST-API  -v1.0"
                 });
             });
             services.AddControllers();
@@ -60,8 +60,6 @@ namespace ALS_BillingAppointmentAPI
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
-
 
             app.UseEndpoints(endpoints =>
             {
