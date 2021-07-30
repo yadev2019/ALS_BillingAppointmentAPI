@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\ARISE003\\.nuget\\packages\\": {}
+    "C:\\Users\\ARISE001\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\BBTEC\\Code\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI.csproj",
+      "projectUniqueName": "D:\\AriseProject\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI.csproj",
       "projectName": "ALS_BillingAppointmentAPI",
-      "projectPath": "D:\\Projects\\BBTEC\\Code\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI.csproj",
-      "packagesPath": "C:\\Users\\ARISE003\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\BBTEC\\Code\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\obj\\",
+      "projectPath": "D:\\AriseProject\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI.csproj",
+      "packagesPath": "C:\\Users\\ARISE001\\.nuget\\packages\\",
+      "outputPath": "D:\\AriseProject\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ARISE003\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ARISE001\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
