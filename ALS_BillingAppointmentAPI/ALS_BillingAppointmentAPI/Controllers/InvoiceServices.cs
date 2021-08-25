@@ -1,5 +1,6 @@
 ﻿using ALS_BillingAppointmentAPI.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ALS_BillingAppointmentAPI.Controllers
 {
@@ -16,14 +16,27 @@ namespace ALS_BillingAppointmentAPI.Controllers
     [ApiController]
     public class InvoiceServices : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+        public static string baseUrl;
+        public static string userName;
+        public static string Password;
+
+        public InvoiceServices(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            baseUrl = _configuration["AppSettings:BaseUrl"];
+            userName = _configuration["AppSettings:Username"];
+            Password = _configuration["AppSettings:Password"];
+        }
+
         [HttpGet("GetInvoiceHeader")]
         public async Task<IActionResult> GetInvoiceHeader()
         {
-            var url = "http://webdata.uatangel.corp.alsglobal.org/odata/Invoices/Default.GetInvoiceHeaders(startDate='2021-07-01',endDate='2021-07-16',invoiceNumber='',workorderCode='')";
+            var url = baseUrl + "/Default.GetInvoiceHeaders(startDate='2021-07-01',endDate='2021-07-16',invoiceNumber='',workorderCode='')";
             var credentialsCache = new CredentialCache
             {
                 {new Uri(url), "NTLM", new NetworkCredential(
-                    "athit.khaokaew","K8[ZdKR3" //,"http://webdata.uatangel.corp.alsglobal.org"
+                    userName,Password
                 )}
             };
             var handler = new HttpClientHandler { Credentials = credentialsCache };
@@ -49,12 +62,11 @@ namespace ALS_BillingAppointmentAPI.Controllers
         [HttpGet("GetInvoiceDetail")]
         public async Task<IActionResult> GetInvoiceDetail()
         {
-            //var baseUrl = "http://webdata.uatangel.corp.alsglobal.org";
-            var url = "http://webdata.uatangel.corp.alsglobal.org/odata/Invoices/Default.GetBillingAppointmentReportData(invoiceNumbersList='1111275')";
+            var url = baseUrl + "/Default.GetBillingAppointmentReportData(invoiceNumbersList='1111275')";
             var credentialsCache = new CredentialCache
             {
                 {new Uri(url), "NTLM", new NetworkCredential(
-                    "athit.khaokaew","K8[ZdKR3" //,"http://webdata.uatangel.corp.alsglobal.org"
+                    userName,Password
                 )}
             };
             var handler = new HttpClientHandler { Credentials = credentialsCache };
@@ -68,7 +80,6 @@ namespace ALS_BillingAppointmentAPI.Controllers
                   var response = taskwithresponse.Result;
                   var jsonString = response.Content.ReadAsStringAsync();
                   jsonString.Wait();
-
                   inv = JsonConvert.DeserializeObject<InvoiceDetailModel>(jsonString.Result);
 
               });
