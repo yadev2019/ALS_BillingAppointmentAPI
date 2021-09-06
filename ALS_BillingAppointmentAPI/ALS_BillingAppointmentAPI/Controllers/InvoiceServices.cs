@@ -103,6 +103,7 @@ namespace ALS_BillingAppointmentAPI.Controllers
                   });
                 task.Wait();
 
+                //System.Threading.Thread.Sleep(3000);
                 //var invoiceDetail = GetInvoiceDetail();
 
                 return Ok(new BaseResponseViewModel<TbSInvoiceHeader>()

@@ -96,11 +96,12 @@ namespace ALS_BillingAppointmentAPI
                 endpoints.MapHangfireDashboard();
             });
 
-            //app.UseHangfireDashboard("/batchfile");
-            //RecurringJob.AddOrUpdate<InvoiceServices>("Schedule Auto Import Odata",
-            //    e => e.GetInvoiceHeader(), Cron.Daily(10, 00), TimeZoneInfo.Utc);
-            //RecurringJob.AddOrUpdate<InvoiceServices>("Schedule Auto Import Customer Master",
-            //    e => e.ImportCustomerXml(), Cron.Daily(00, 00), TimeZoneInfo.Local);
+            app.UseHangfireDashboard("/batchfile");
+            RecurringJob.AddOrUpdate<InvoiceServices>("Schedule Auto Import Odata",
+                e => e.GetInvoiceHeader(), Cron.Daily(10, 00), TimeZoneInfo.Utc);
+            //System.Threading.Thread.Sleep(50);
+            RecurringJob.AddOrUpdate<InvoiceServices>("Schedule Auto Import Odata",
+                e => e.GetInvoiceDetail(), Cron.Daily(10, 10), TimeZoneInfo.Utc);
         }
     }
 }
