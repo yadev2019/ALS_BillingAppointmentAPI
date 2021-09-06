@@ -9,12 +9,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Hangfire;
+using Hangfire.SqlServer;
 using Swashbuckle.Swagger;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ALS_BillingAppointmentAPI.Controllers;
 
 namespace ALS_BillingAppointmentAPI
 {
@@ -45,10 +48,27 @@ namespace ALS_BillingAppointmentAPI
                 });
             });
             services.AddControllers();
+
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new SqlServerStorageOptions
+                {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    DisableGlobalLocks = true
+                }));
+
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBackgroundJobClient backgroundJobs)
         {
             if (env.IsDevelopment())
             {
@@ -61,6 +81,9 @@ namespace ALS_BillingAppointmentAPI
 
             app.UseAuthorization();
 
+            app.UseHangfireDashboard();
+            //backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -70,7 +93,14 @@ namespace ALS_BillingAppointmentAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHangfireDashboard();
             });
+
+            //app.UseHangfireDashboard("/batchfile");
+            //RecurringJob.AddOrUpdate<InvoiceServices>("Schedule Auto Import Odata",
+            //    e => e.GetInvoiceHeader(), Cron.Daily(10, 00), TimeZoneInfo.Utc);
+            //RecurringJob.AddOrUpdate<InvoiceServices>("Schedule Auto Import Customer Master",
+            //    e => e.ImportCustomerXml(), Cron.Daily(00, 00), TimeZoneInfo.Local);
         }
     }
 }

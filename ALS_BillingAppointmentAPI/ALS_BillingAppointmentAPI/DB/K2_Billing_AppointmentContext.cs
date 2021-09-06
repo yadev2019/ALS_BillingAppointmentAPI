@@ -570,6 +570,10 @@ namespace ALS_BillingAppointmentAPI.DB
                     .ValueGeneratedNever()
                     .HasColumnName("ID");
 
+                entity.Property(e => e.BillToClientCode).HasMaxLength(50);
+
+                entity.Property(e => e.BillToContactPerson).HasMaxLength(255);
+
                 entity.Property(e => e.CeateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");

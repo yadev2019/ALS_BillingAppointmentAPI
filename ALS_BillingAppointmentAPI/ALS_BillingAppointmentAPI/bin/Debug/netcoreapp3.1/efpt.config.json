@@ -88,6 +88,18 @@
       {
          "Name": "[dbo].[vPackageList]",
          "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[usp_AdhocListInvoiceByInvoiceAddress]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[usp_CriteriaSearchBillingAppointment]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[usp_GetNewRunningNo]",
+         "ObjectType": 1
       }
    ],
    "UiHint": "ARISE-001\\SQLEXPRESS.K2_Billing_Appointment",
@@ -99,6 +111,7 @@
    "UseInflector": false,
    "UseLegacyPluralizer": false,
    "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
    "UseNoNavigations": false,
    "UseNoObjectFilter": false,
    "UseNodaTime": false,

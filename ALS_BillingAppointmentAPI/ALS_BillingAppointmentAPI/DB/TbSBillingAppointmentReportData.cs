@@ -56,6 +56,9 @@ namespace ALS_BillingAppointmentAPI.DB
         public string ReportToState { get; set; }
         public string ReportToZip { get; set; }
         public string ReportToLocation { get; set; }
+        public string BillToClientCode { get; set; }
+        public string BillToClientName { get; set; }
+        public string BillToContactPerson { get; set; }
         public string PaymentDeliveryProcess { get; set; }
         public string PaymentDeliveryNotes { get; set; }
         public string ReportLocation { get; set; }
