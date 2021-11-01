@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P5rVrKrw9Rz0akW7ZbDY5D/YIy2ARBb56ZMwNwOjeo5HM8ygtsb0jI2UxvQlZepLSrPeL9PRt6A44UuiDhIfmA==",
+  "dgSpecHash": "Gkr+S4sAjUC6FVUpmmGJgEfQPIoOxC02xA3x5HHEtH3rriiFS3A7GfJ0R35ANxxzgW/5sAJ5Gj7hDO4GgHfrVQ==",
   "success": true,
   "projectFilePath": "D:\\AriseProject\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI\\ALS_BillingAppointmentAPI.csproj",
   "expectedPackageFiles": [
@@ -110,7 +110,8 @@
     "C:\\Users\\ARISE001\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\ARISE001\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\ARISE001\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\ARISE001\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\ARISE001\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\ARISE001\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.18\\microsoft.netcore.app.host.win-x64.3.1.18.nupkg.sha512"
   ],
   "logs": [
     {
