@@ -1,5 +1,5 @@
 ﻿{
-   "CodeGenerationMode": 0,
+   "CodeGenerationMode": 1,
    "ContextClassName": "K2_Billing_AppointmentContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
