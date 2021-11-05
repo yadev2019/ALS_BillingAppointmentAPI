@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace ALS_BillingAppointmentAPI.DB
 {
     public partial class TbRInvoice
@@ -21,6 +19,8 @@ namespace ALS_BillingAppointmentAPI.DB
         public string ReportsToTel { get; set; }
         public DateTime? InvoiceIssueDate { get; set; }
         public DateTime? InvoiceDateOverride { get; set; }
+        public string InvoiceNote { get; set; }
+        public string InvoiceProcess { get; set; }
         public decimal? TotalInvoiceAmountIncVat { get; set; }
         public string CreditTerm { get; set; }
         public string StatusCode { get; set; }

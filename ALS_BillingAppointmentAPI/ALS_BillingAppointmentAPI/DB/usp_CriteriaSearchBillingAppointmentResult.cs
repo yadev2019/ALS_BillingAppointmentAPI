@@ -7,6 +7,14 @@ namespace ALS_BillingAppointmentAPI.DB
 {
     public partial class usp_CriteriaSearchBillingAppointmentResult
     {
-        public string Col0 { get; set; }
+        public Guid Package_ID { get; set; }
+        public string Package_No { get; set; }
+        public string Package_Name { get; set; }
+        public DateTime? Package_Delivery_Date { get; set; }
+        public DateTime? Logistics_Delivery_Date { get; set; }
+        public string Status_Code { get; set; }
+        public string STATUS_NAME { get; set; }
+        public string CreateBy { get; set; }
+        public DateTime? CreateDate { get; set; }
     }
 }

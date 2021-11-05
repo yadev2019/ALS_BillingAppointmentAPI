@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace ALS_BillingAppointmentAPI.DB
 {
     public partial class TbSBillingAppointmentReportData
@@ -44,8 +42,8 @@ namespace ALS_BillingAppointmentAPI.DB
         public string AnalysisReportDeliverToLocation { get; set; }
         public string InvoiceDeliveryNotes { get; set; }
         public string InvoiceDeliveryProcess { get; set; }
-        public string InvoiceIssuedDate { get; set; }
-        public string InvoiceDateOverride { get; set; }
+        public DateTime? InvoiceIssuedDate { get; set; }
+        public DateTime? InvoiceDateOverride { get; set; }
         public string InvoiceNumbersIncludedInSearch { get; set; }
         public string TotalInvoiceAmountIncludingVat { get; set; }
         public string ReportToPersonName { get; set; }

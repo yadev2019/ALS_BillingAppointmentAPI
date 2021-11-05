@@ -51,8 +51,8 @@ namespace ALS_BillingAppointmentAPI.Model
         public string AnalysisReportDeliverToLocation { get; set; }
         public object InvoiceDeliveryNotes { get; set; }
         public object InvoiceDeliveryProcess { get; set; }
-        public DateTime InvoiceIssuedDate { get; set; }
-        public object InvoiceDateOverride { get; set; }
+        public DateTime? InvoiceIssuedDate { get; set; }
+        public DateTime? InvoiceDateOverride { get; set; }
         public string InvoiceNumbersIncludedInSearch { get; set; }
         public double TotalInvoiceAmountIncludingVat { get; set; }
         public string ReportToPersonName { get; set; }
@@ -72,7 +72,7 @@ namespace ALS_BillingAppointmentAPI.Model
         public string BillToClientCode { get; set; }
         public string BillToClientName { get; set; }
         public string BillToContactPerson { get; set; }
-        public bool ConsolidateBillingFlag { get; set; }
+        public bool? ConsolidateBillingFlag { get; set; }
         public string ConsolidateBillingDeliverToOffice { get; set; }
         public string ConsolidateBillingDeliverToAddress1 { get; set; }
         public object ConsolidateBillingDeliverToAddress2 { get; set; }

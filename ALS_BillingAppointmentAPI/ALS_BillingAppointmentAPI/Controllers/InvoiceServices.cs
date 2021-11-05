@@ -84,7 +84,7 @@ namespace ALS_BillingAppointmentAPI.Controllers
                                       InvoiceId = item.InvoiceId.ToString(),
                                       InvoiceNumber = item.InvoiceNumber,
                                       ClientCode = item.ClientCode,
-                                      InvoiceIssuedDate = item.InvoiceIssuedDate.ToString(),
+                                      InvoiceIssuedDate = item.InvoiceIssuedDate,
                                       InvoiceAmount = item.InvoiceAmount.ToString(),
                                       QuoteCode = item.QuoteCode,
                                       CreateDate = DateTime.Now,
@@ -180,10 +180,10 @@ namespace ALS_BillingAppointmentAPI.Controllers
                                           InvoiceId = item.InvoiceId.ToString(),
                                           InvoiceDeliveryType = item.InvoiceDeliveryType,
                                           AnalysisReportDeliveryType = item.AnalysisReportDeliveryType,
-                                          InvoiceDeliveryLaboratory = (item.InvoiceDeliveryLaboratory == null ? "" : item.InvoiceDeliveryLaboratory.ToString()),
+                                          InvoiceDeliveryLaboratory = ((item.InvoiceDeliveryLaboratory == null|| item.InvoiceDeliveryLaboratory == "") ? null : item.InvoiceDeliveryLaboratory.ToString()),
                                           AnalysisReportDeliveryLaboratory = item.AnalysisReportDeliveryLaboratory,
-                                          QuoteCode = (item.QuoteCode == null ? "" : item.QuoteCode.ToString()),
-                                          CreditTerm = (item.CreditTerm == null ? "" : item.CreditTerm.ToString()),
+                                          QuoteCode = ((item.QuoteCode == null || item.QuoteCode == "") ? null : item.QuoteCode.ToString()),
+                                          CreditTerm = (item.CreditTerm == null ? null : item.CreditTerm.ToString()),
                                           InvoiceDeliveryClientCode = item.InvoiceDeliveryClientCode,
                                           AnalysisReportDeliverToClientCode = item.AnalysisReportDeliverToClientCode,
                                           AnalysisReportDeliverToClientName = item.AnalysisReportDeliverToClientName,
@@ -193,7 +193,7 @@ namespace ALS_BillingAppointmentAPI.Controllers
                                           InvoiceDeliverToPersonMobile = item.InvoiceDeliverToPersonMobile,
                                           AnalysisReportDeliverToPersonName = item.AnalysisReportDeliverToPersonName,
                                           AnalysisReportDeliverToPersonTelephone = item.AnalysisReportDeliverToPersonTelephone,
-                                          AnalysisReportDeliverToPersonMobile = (item.AnalysisReportDeliverToPersonMobile == null ? "" : item.AnalysisReportDeliverToPersonMobile.ToString()),
+                                          AnalysisReportDeliverToPersonMobile = ((item.AnalysisReportDeliverToPersonMobile == null || item.AnalysisReportDeliverToPersonMobile == "") ? null : item.AnalysisReportDeliverToPersonMobile.ToString()),
                                           InvoiceDeliverToOffice = item.InvoiceDeliverToOffice,
                                           InvoiceDeliverToAddress1 = item.InvoiceDeliverToAddress1,
                                           InvoiceDeliverToAddress2 = item.InvoiceDeliverToAddress2,
@@ -210,10 +210,10 @@ namespace ALS_BillingAppointmentAPI.Controllers
                                           AnalysisReportDeliverToState = item.AnalysisReportDeliverToState,
                                           AnalysisReportDeliverToZip = item.AnalysisReportDeliverToZip,
                                           AnalysisReportDeliverToLocation = item.AnalysisReportDeliverToLocation,
-                                          InvoiceDeliveryNotes = (item.InvoiceDeliveryNotes == null ? "" : item.InvoiceDeliveryNotes.ToString()),
-                                          InvoiceDeliveryProcess = (item.InvoiceDeliveryProcess == null ? "" : item.InvoiceDeliveryProcess.ToString()),
-                                          InvoiceIssuedDate = (item.InvoiceIssuedDate == null ? "" : item.InvoiceIssuedDate.ToString()),
-                                          InvoiceDateOverride = (item.InvoiceDateOverride == null ? "" : item.InvoiceDateOverride.ToString()),
+                                          InvoiceDeliveryNotes = ((item.InvoiceDeliveryNotes == null || item.InvoiceDeliveryNotes == "") ? null : item.InvoiceDeliveryNotes.ToString()),
+                                          InvoiceDeliveryProcess = ((item.InvoiceDeliveryProcess == null || item.InvoiceDeliveryProcess == "") ? null : item.InvoiceDeliveryProcess.ToString()),
+                                          InvoiceIssuedDate = item.InvoiceIssuedDate,
+                                          InvoiceDateOverride = item.InvoiceDateOverride,
                                           InvoiceNumbersIncludedInSearch = item.InvoiceNumbersIncludedInSearch,
                                           TotalInvoiceAmountIncludingVat = item.TotalInvoiceAmountIncludingVat.ToString(),
                                           ReportToPersonName = item.ReportToPersonName,
@@ -227,12 +227,14 @@ namespace ALS_BillingAppointmentAPI.Controllers
                                           //BillToClientCode = item.BillToClientCode,
                                           //BillToClientName = item.BillToClientName,
                                           //BillToContactPerson = item.BillToContactPerson,
-                                          PaymentDeliveryProcess = (item.PaymentDeliveryProcess == null ? "" : item.PaymentDeliveryProcess.ToString()),
-                                          PaymentDeliveryNotes = (item.PaymentDeliveryNotes == null ? "" : item.PaymentDeliveryNotes.ToString()),
-                                          ReportLocation = (item.ReportLocation == null ? "" : item.ReportLocation.ToString()),
-                                          GenerateBillingAppointmentPerInvoice = (item.GenerateBillingAppointmentPerInvoice == null ? "" : item.GenerateBillingAppointmentPerInvoice.ToString()),
-                                          InvoicePaid = (item.InvoicePaid == null ? "" : item.InvoicePaid.ToString()),
-                                      });
+                                          PaymentDeliveryProcess = (item.PaymentDeliveryProcess == null ? null : item.PaymentDeliveryProcess.ToString()),
+                                          PaymentDeliveryNotes = (item.PaymentDeliveryNotes == null ? null : item.PaymentDeliveryNotes.ToString()),
+                                          ReportLocation = ((item.ReportLocation == null || item.ReportLocation == "") ? null : item.ReportLocation.ToString()),
+                                          GenerateBillingAppointmentPerInvoice = (item.GenerateBillingAppointmentPerInvoice == null  ? null : item.GenerateBillingAppointmentPerInvoice.ToString()),
+                                          InvoicePaid = (item.InvoicePaid == null  ? null : item.InvoicePaid.ToString()),
+                                          CeateBy = "K2Admin",
+                                          CreateDate = DateTime.Now
+                                      });;;
                                       db.TbSBillingAppointmentReportData.Add(add);
                                   }
                               }
@@ -272,41 +274,197 @@ namespace ALS_BillingAppointmentAPI.Controllers
                 var invoiceHeader = db.TbSInvoiceHeader.ToList();
                 //List<TbSBillingAppointmentReportData> invoiceDetail = new List<TbSBillingAppointmentReportData>();
                 //var invoiceDetail = db.TbSBillingAppointmentReportData.OrderBy(x => { x.QuoteCode, x.InvoiceDeliveryClientCode, x.InvoiceDeliveryLaboratory, x.InvoiceDeliveryType, x.InvoiceIssuedDate}).ToList();
-                var invoiceDetail = db.TbSBillingAppointmentReportData.OrderBy(x => x.QuoteCode).ThenBy(x => x.InvoiceDeliveryClientCode).ThenBy(x => x.InvoiceDeliveryLaboratory).ThenBy(x => x.InvoiceDeliveryType).ThenBy(x => x.InvoiceIssuedDate).ToList();
-                var baID = (dynamic)null;
-                //var quoteCode = (dynamic)null;
-                //var custCode = (dynamic)null;
-                //var Lab = (dynamic)null;
-                //var printDate = (dynamic)null;
-                //var deliveryType = (dynamic)null;
-                string quoteCode = "";
-                string custCode = "";
-                string Lab = "";
-                string printDate = "";
-                string deliveryType = "";
+                var invoiceDetail = db.TbSBillingAppointmentReportData
+                                    .OrderBy(x => x.InvoiceDeliveryClientCode)
+                                    .ThenBy(x => x.QuoteCode)
+                                    .ThenBy(x => x.InvoiceDeliveryLaboratory)
+                                    .ThenBy(x => x.InvoiceDeliveryType)
+                                    .ThenBy(x => x.InvoiceIssuedDate).ToList();
+
+                var custCode = (dynamic)null;
+                var quoteCode = (dynamic)null;
+                var Lab = (dynamic)null;
+                var OverrideDate = (dynamic)null;
+                var deliveryType = (dynamic)null;
+
+                var baID = Guid.NewGuid();
 
                 if (invoiceDetail != null && invoiceDetail.Count > 0)
                 {
                     foreach (var item in invoiceDetail)
                     {
-                        if (item.QuoteCode != quoteCode
-                            && item.InvoiceDeliveryClientCode != custCode
-                            && item.InvoiceDeliveryLaboratory != Lab
-                            && item.InvoiceDateOverride != printDate
-                            && item.InvoiceDeliveryType != deliveryType)    // new BAID
-                        //if (string.IsNullOrEmpty(item.QuoteCode) != quoteCode
-                        //    && string.IsNullOrEmpty(item.InvoiceDeliveryClientCode) != custCode
-                        //    && string.IsNullOrEmpty(item.InvoiceDeliveryLaboratory) != Lab
-                        //    && string.IsNullOrEmpty(item.InvoiceDateOverride) != printDate
-                        //    && string.IsNullOrEmpty(item.InvoiceDeliveryType) != deliveryType)
+                        OverrideDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
+
+                        if (item.InvoiceDeliveryClientCode == custCode)
+                        {
+                            if (item.QuoteCode == quoteCode)
+                            {
+                                if (item.AnalysisReportDeliveryLaboratory == Lab)
+                                {
+                                    if (item.InvoiceIssuedDate == OverrideDate || item.InvoiceDateOverride == OverrideDate)
+                                    {
+                                        if (item.InvoiceDeliveryType == deliveryType)
+                                        {
+                                            #region // same baid
+                                            var add = new TbRInvoice();
+
+                                            add.InvoiceId = Guid.NewGuid();
+                                            add.BaId = baID;
+                                            add.CustCode = item.InvoiceDeliveryClientCode;
+                                            add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                                            add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                                            add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                                            add.ReportToComany = item.ReportToPersonName;
+                                            add.ReportsToAddress = item.ReportToAddress1;
+                                            add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                                            add.InvoiceIssueDate = OverrideDate;
+                                            add.InvoiceDateOverride = item.InvoiceDateOverride;
+                                            add.InvoiceNote = item.InvoiceDeliveryNotes;
+                                            add.InvoiceProcess = item.InvoiceDeliveryProcess;
+                                            add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                                            add.CreditTerm = item.CreditTerm;
+                                            add.StatusCode = "8";
+                                            add.CreateDate = DateTime.Today;
+                                            add.CreateBy = "K2Admin";
+
+                                            db.TbRInvoice.Add(add);
+                                            db.SaveChanges();
+                                            #endregion
+                                        }
+                                        else
+                                        {
+                                            baID = Guid.NewGuid();
+                                            deliveryType = item.InvoiceDeliveryType;
+
+                                            #region 
+                                            var add = new TbRInvoice();
+
+                                            add.InvoiceId = Guid.NewGuid();
+                                            add.BaId = baID;
+                                            add.CustCode = item.InvoiceDeliveryClientCode;
+                                            add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                                            add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                                            add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                                            add.ReportToComany = item.ReportToPersonName;
+                                            add.ReportsToAddress = item.ReportToAddress1;
+                                            add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                                            add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                                            add.InvoiceDateOverride = item.InvoiceDateOverride;
+                                            add.InvoiceNote = item.InvoiceDeliveryNotes;
+                                            add.InvoiceProcess = item.InvoiceDeliveryProcess;
+                                            add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                                            add.CreditTerm = item.CreditTerm;
+                                            add.StatusCode = "7";
+                                            add.CreateDate = DateTime.Today;
+                                            add.CreateBy = "K2Admin";
+
+                                            db.TbRInvoice.Add(add);
+                                            db.SaveChanges();
+                                            #endregion
+                                        }
+                                    }
+                                    else
+                                    {
+                                        baID = Guid.NewGuid();
+                                        OverrideDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
+
+                                        #region 
+                                        var add = new TbRInvoice();
+
+                                        add.InvoiceId = Guid.NewGuid();
+                                        add.BaId = baID;
+                                        add.CustCode = item.InvoiceDeliveryClientCode;
+                                        add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                                        add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                                        add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                                        add.ReportToComany = item.ReportToPersonName;
+                                        add.ReportsToAddress = item.ReportToAddress1;
+                                        add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                                        add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                                        add.InvoiceDateOverride = item.InvoiceDateOverride;
+                                        add.InvoiceNote = item.InvoiceDeliveryNotes;
+                                        add.InvoiceProcess = item.InvoiceDeliveryProcess;
+                                        add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                                        add.CreditTerm = item.CreditTerm;
+                                        add.StatusCode = "7";
+                                        add.CreateDate = DateTime.Today;
+                                        add.CreateBy = "K2Admin";
+
+                                        db.TbRInvoice.Add(add);
+                                        db.SaveChanges();
+                                        #endregion
+                                    }
+                                }
+                                else if (item.InvoiceDeliveryLaboratory != Lab)
+                                {
+                                    baID = Guid.NewGuid();
+                                    Lab = item.InvoiceDeliveryLaboratory;
+
+                                    #region 
+                                    var add = new TbRInvoice();
+
+                                    add.InvoiceId = Guid.NewGuid();
+                                    add.BaId = baID;
+                                    add.CustCode = item.InvoiceDeliveryClientCode;
+                                    add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                                    add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                                    add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                                    add.ReportToComany = item.ReportToPersonName;
+                                    add.ReportsToAddress = item.ReportToAddress1;
+                                    add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                                    add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                                    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                                    add.InvoiceNote = item.InvoiceDeliveryNotes;
+                                    add.InvoiceProcess = item.InvoiceDeliveryProcess;
+                                    add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                                    add.CreditTerm = item.CreditTerm;
+                                    add.StatusCode = "7";
+                                    add.CreateDate = DateTime.Today;
+                                    add.CreateBy = "K2Admin";
+
+                                    db.TbRInvoice.Add(add);
+                                    db.SaveChanges();
+                                    #endregion
+                                }
+                            }
+                            else if (item.QuoteCode != quoteCode)
+                            {
+                                baID = Guid.NewGuid();
+                                quoteCode = item.QuoteCode;
+
+                                #region 
+                                var add = new TbRInvoice();
+
+                                add.InvoiceId = Guid.NewGuid();
+                                add.BaId = baID;
+                                add.CustCode = item.InvoiceDeliveryClientCode;
+                                add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                                add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                                add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                                add.ReportToComany = item.ReportToPersonName;
+                                add.ReportsToAddress = item.ReportToAddress1;
+                                add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                                add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                                add.InvoiceDateOverride = item.InvoiceDateOverride;
+                                add.InvoiceNote = item.InvoiceDeliveryNotes;
+                                add.InvoiceProcess = item.InvoiceDeliveryProcess;
+                                add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                                add.CreditTerm = item.CreditTerm;
+                                add.StatusCode = "7";
+                                add.CreateDate = DateTime.Today;
+                                add.CreateBy = "K2Admin";
+
+                                db.TbRInvoice.Add(add);
+                                db.SaveChanges();
+                                #endregion
+                            }
+                        }
+                        else if (item.InvoiceDeliveryClientCode != custCode)
                         {
                             baID = Guid.NewGuid();
-                            quoteCode = item.QuoteCode;
                             custCode = item.InvoiceDeliveryClientCode;
-                            Lab = item.InvoiceDeliveryLaboratory;
-                            printDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
-                            deliveryType = item.InvoiceDeliveryType;
 
+                            #region 
                             var add = new TbRInvoice();
 
                             add.InvoiceId = Guid.NewGuid();
@@ -318,61 +476,179 @@ namespace ALS_BillingAppointmentAPI.Controllers
                             add.ReportToComany = item.ReportToPersonName;
                             add.ReportsToAddress = item.ReportToAddress1;
                             add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
-                            add.InvoiceIssueDate = Convert.ToDateTime(item.InvoiceIssuedDate);
-                            add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
-                            add.CreditTerm = item.CreditTerm;
-                            add.StatusCode = "8";
-                            add.CreateDate = DateTime.Now;
-                            add.CreateBy = "K2Admin";
-                                
-                            if (!string.IsNullOrEmpty(item.InvoiceDateOverride))
-                            {
-                                add.InvoiceDateOverride = Convert.ToDateTime(item.InvoiceDateOverride);
-                            }
-                            db.TbRInvoice.Add(add);
-                        }
-
-                        else if (string.IsNullOrEmpty(item.QuoteCode) == quoteCode
-                            && string.IsNullOrEmpty(item.InvoiceDeliveryClientCode) == custCode
-                            && string.IsNullOrEmpty(item.InvoiceDeliveryLaboratory) == Lab
-                            && string.IsNullOrEmpty(item.InvoiceDateOverride) == printDate
-                            && string.IsNullOrEmpty(item.InvoiceDeliveryType) == deliveryType)    // same BAID
-                        {
-                            printDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
-
-                            var add = new TbRInvoice();
-
-                            add.InvoiceId = Guid.NewGuid();
-                            add.BaId = baID;
-                            add.CustCode = item.InvoiceDeliveryClientCode;
-                            add.DeliveryAddress = item.InvoiceDeliverToAddress1;
-                            add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
-                            add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
-                            add.ReportToComany = item.ReportToPersonName;
-                            add.ReportsToAddress = item.ReportToAddress1;
-                            add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
-                            add.InvoiceIssueDate = Convert.ToDateTime(item.InvoiceIssuedDate);
+                            add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                            add.InvoiceDateOverride = item.InvoiceDateOverride;
+                            add.InvoiceNote = item.InvoiceDeliveryNotes;
+                            add.InvoiceProcess = item.InvoiceDeliveryProcess;
                             add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
                             add.CreditTerm = item.CreditTerm;
                             add.StatusCode = "7";
-                            add.CreateDate = DateTime.Now;
+                            add.CreateDate = DateTime.Today;
                             add.CreateBy = "K2Admin";
 
-                            if (!string.IsNullOrEmpty(item.InvoiceDateOverride))
-                            {
-                                add.InvoiceDateOverride = Convert.ToDateTime(item.InvoiceDateOverride);
-                            }
-
                             db.TbRInvoice.Add(add);
+                            db.SaveChanges();
+                            #endregion //new baid
                         }
+
+                        //if ((item.QuoteCode == quoteCode
+                        //    && item.InvoiceDeliveryClientCode == custCode
+                        //    && item.InvoiceDeliveryLaboratory == Lab
+                        //    && item.InvoiceDeliveryType == deliveryType) 
+                        //    && (item.InvoiceIssuedDate == OverrideDate) || (item.InvoiceDateOverride == OverrideDate)) // Same BA
+                        //{
+
+                        //    var add = new TbRInvoice();
+
+                        //    add.InvoiceId = Guid.NewGuid();
+                        //    add.BaId = baID;
+                        //    add.CustCode = item.InvoiceDeliveryClientCode;
+                        //    add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                        //    add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                        //    add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                        //    add.ReportToComany = item.ReportToPersonName;
+                        //    add.ReportsToAddress = item.ReportToAddress1;
+                        //    add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                        //    add.InvoiceIssueDate = OverrideDate;
+                        //    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                        //    add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                        //    add.CreditTerm = item.CreditTerm;
+                        //    add.StatusCode = "7";
+                        //    add.CreateDate = DateTime.Today;
+                        //    add.CreateBy = "K2Admin";
+
+                        //    db.TbRInvoice.Add(add);
+                        //    db.SaveChanges();
+                        //}
+                        //else if ((item.QuoteCode != quoteCode
+                        //    && item.InvoiceDeliveryClientCode != custCode
+                        //    && item.InvoiceDeliveryLaboratory != Lab
+                        //    && item.InvoiceDeliveryType != deliveryType)
+                        //    && (item.InvoiceIssuedDate == OverrideDate) || (item.InvoiceDateOverride == OverrideDate)) // New BA
+                        //{
+
+                        //    baID = Guid.NewGuid();
+                        //    quoteCode = item.QuoteCode;
+                        //    custCode = item.InvoiceDeliveryClientCode;
+                        //    Lab = item.InvoiceDeliveryLaboratory;
+                        //    //OverrideDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
+                        //    deliveryType = item.InvoiceDeliveryType;
+
+                        //    var add = new TbRInvoice();
+
+                        //    add.InvoiceId = Guid.NewGuid();
+                        //    add.BaId = baID;
+                        //    add.CustCode = item.InvoiceDeliveryClientCode;
+                        //    add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                        //    add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                        //    add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                        //    add.ReportToComany = item.ReportToPersonName;
+                        //    add.ReportsToAddress = item.ReportToAddress1;
+                        //    add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                        //    add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                        //    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                        //    add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                        //    add.CreditTerm = item.CreditTerm;
+                        //    add.StatusCode = "8";
+                        //    add.CreateDate = DateTime.Today;
+                        //    add.CreateBy = "K2Admin";
+
+                        //    db.TbRInvoice.Add(add);
+                        //    db.SaveChanges();
+                        //}
+
+
+                        ////    if (item.QuoteCode != quoteCode
+                        ////    && item.InvoiceDeliveryClientCode != custCode
+                        ////    && item.InvoiceDeliveryLaboratory != Lab
+                        ////    && item.InvoiceDateOverride != OverrideDate
+                        ////    && item.InvoiceDeliveryType != deliveryType)    // new BAID
+                        ////    //if (string.IsNullOrEmpty(item.QuoteCode) != quoteCode
+                        ////    //&& string.IsNullOrEmpty(item.InvoiceDeliveryClientCode) != custCode
+                        ////    //&& string.IsNullOrEmpty(item.InvoiceDeliveryLaboratory) != Lab
+                        ////    //&& item.InvoiceDateOverride != printDate
+                        ////    //&& string.IsNullOrEmpty(item.InvoiceDeliveryType) != deliveryType)
+                        ////{
+                        ////    baID = Guid.NewGuid();
+                        ////    quoteCode = item.QuoteCode;
+                        ////    custCode = item.InvoiceDeliveryClientCode;
+                        ////    Lab = item.InvoiceDeliveryLaboratory;
+                        ////    OverrideDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
+                        ////    deliveryType = item.InvoiceDeliveryType;
+
+                        ////    var add = new TbRInvoice();
+
+                        ////    add.InvoiceId = Guid.NewGuid();
+                        ////    add.BaId = baID;
+                        ////    add.CustCode = item.InvoiceDeliveryClientCode;
+                        ////    add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                        ////    add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                        ////    add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                        ////    add.ReportToComany = item.ReportToPersonName;
+                        ////    add.ReportsToAddress = item.ReportToAddress1;
+                        ////    add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                        ////    add.InvoiceIssueDate = item.InvoiceIssuedDate;
+                        ////    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                        ////    add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                        ////    add.CreditTerm = item.CreditTerm;
+                        ////    add.StatusCode = "8";
+                        ////    add.CreateDate = DateTime.Today;
+                        ////    add.CreateBy = "K2Admin";
+
+                        ////    ////if (!string.IsNullOrEmpty(item.InvoiceDateOverride))
+                        ////    //if (item.InvoiceDateOverride != null)
+                        ////    //{
+                        ////    //    //add.InvoiceDateOverride = Convert.ToDateTime(item.InvoiceDateOverride);
+                        ////    //    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                        ////    //}
+                        ////    db.TbRInvoice.Add(add);
+                        ////    db.SaveChanges();
+                        ////}
+
+                        ////else if (item.QuoteCode == quoteCode
+                        ////    && item.InvoiceDeliveryClientCode == custCode
+                        ////    && item.InvoiceDeliveryLaboratory == Lab
+                        ////    && item.InvoiceDateOverride == OverrideDate
+                        ////    && item.InvoiceDeliveryType == deliveryType)    // same BAID
+                        ////{
+                        ////    var printDate = (item.InvoiceDateOverride == null ? item.InvoiceIssuedDate : item.InvoiceDateOverride);
+
+                        ////    var add = new TbRInvoice();
+
+                        ////    add.InvoiceId = Guid.NewGuid();
+                        ////    add.BaId = baID;
+                        ////    add.CustCode = item.InvoiceDeliveryClientCode;
+                        ////    add.DeliveryAddress = item.InvoiceDeliverToAddress1;
+                        ////    add.DeliveryToPerson = item.InvoiceDeliverToPersonName;
+                        ////    add.DeliveryToTel = item.InvoiceDeliverToPersonTelephone;
+                        ////    add.ReportToComany = item.ReportToPersonName;
+                        ////    add.ReportsToAddress = item.ReportToAddress1;
+                        ////    add.ReportsToTel = item.AnalysisReportDeliverToPersonTelephone;
+                        ////    add.InvoiceIssueDate = printDate;
+                        ////    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                        ////    add.TotalInvoiceAmountIncVat = Convert.ToDecimal(item.TotalInvoiceAmountIncludingVat);
+                        ////    add.CreditTerm = item.CreditTerm;
+                        ////    add.StatusCode = "7";
+                        ////    add.CreateDate = DateTime.Today;
+                        ////    add.CreateBy = "K2Admin";
+
+                        ////    ////if (!string.IsNullOrEmpty(item.InvoiceDateOverride))
+                        ////    //if (item.InvoiceDateOverride != null)
+                        ////    //{
+                        ////    //    add.InvoiceDateOverride = item.InvoiceDateOverride;
+                        ////    //}
+
+                        ////    db.TbRInvoice.Add(add);
+                        ////    db.SaveChanges();
+                        ////}
                     }
-                    db.SaveChanges();
+                    //db.SaveChanges();
                 }
 
                 //var newBAID = db.TbRInvoice.Where(x => x.CreateDate == DateTime.Today).OrderBy(x => x.CreateDate).Distinct();
                 //var newBAID = db.TbRInvoice.Select(x => x.BaId).Distinct().ToList();
                 var newBAID = db.TbRInvoice.Where(x => x.CreateDate == DateTime.Today).OrderBy(x => x.CreateDate).Select(x => x.BaId).Distinct().ToList();
-                if (newBAID != null)
+                if (newBAID != null && newBAID.Count > 0)
                 {
                     foreach (var item in newBAID)
                     {
@@ -395,8 +671,9 @@ namespace ALS_BillingAppointmentAPI.Controllers
                             CreateDate = DateTime.Now
                         });
                         db.TbRBa.Add(add);
+                        db.SaveChanges();
                     }
-                    db.SaveChanges();
+                    //db.SaveChanges();
                 }
 
                 var newPackageID = db.TbRBa.Where(x => x.CreateDate == DateTime.Today).OrderBy(x => x.CreateDate).Select(x => x.PackageId).Distinct().ToList();
@@ -419,8 +696,9 @@ namespace ALS_BillingAppointmentAPI.Controllers
                             CreateDate = DateTime.Now
                         });
                         db.TbRPackage.Add(add);
+                        db.SaveChanges();
                     }
-                    db.SaveChanges();
+                    //db.SaveChanges();
                 }
 
                 return Ok(new BaseResponseViewModel<TbSBillingAppointmentReportData>()

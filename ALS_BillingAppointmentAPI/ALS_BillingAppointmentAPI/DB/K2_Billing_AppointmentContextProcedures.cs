@@ -69,7 +69,7 @@ namespace ALS_BillingAppointmentAPI.DB
             return _;
         }
 
-        public virtual async Task<List<usp_CriteriaSearchBillingAppointmentResult>> usp_CriteriaSearchBillingAppointmentAsync(string BA_NO, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<usp_CriteriaSearchBillingAppointmentResult>> usp_CriteriaSearchBillingAppointmentAsync(string CRITERIA_TYPE, string BA_NO, string BILL_TO_COMPANY, string QUOTE_NO, string INVOICE_NO, string DELIVERY_TYPE, string INVOICE_DATE_FROM, string INVOICE_DATE_TO, string PACKAGE_NO, string PACKAGE_STATUS, string PACKAGE_CREATE_DATE_FROM, string PACKAGE_CREATE_DATE_TO, string PACKAGE_DELIVERY_DATE_FROM, string PACKAGE_DELIVERY_DATE_TO, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -82,21 +82,112 @@ namespace ALS_BillingAppointmentAPI.DB
             {
                 new SqlParameter
                 {
+                    ParameterName = "CRITERIA_TYPE",
+                    Size = 10,
+                    Value = CRITERIA_TYPE ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
                     ParameterName = "BA_NO",
                     Size = 40,
                     Value = BA_NO ?? Convert.DBNull,
                     SqlDbType = System.Data.SqlDbType.NVarChar,
                 },
+                new SqlParameter
+                {
+                    ParameterName = "BILL_TO_COMPANY",
+                    Size = 500,
+                    Value = BILL_TO_COMPANY ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "QUOTE_NO",
+                    Size = 100,
+                    Value = QUOTE_NO ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "INVOICE_NO",
+                    Size = 100,
+                    Value = INVOICE_NO ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "DELIVERY_TYPE",
+                    Size = 100,
+                    Value = DELIVERY_TYPE ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "INVOICE_DATE_FROM",
+                    Size = 100,
+                    Value = INVOICE_DATE_FROM ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "INVOICE_DATE_TO",
+                    Size = 100,
+                    Value = INVOICE_DATE_TO ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PACKAGE_NO",
+                    Size = 100,
+                    Value = PACKAGE_NO ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PACKAGE_STATUS",
+                    Size = 100,
+                    Value = PACKAGE_STATUS ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PACKAGE_CREATE_DATE_FROM",
+                    Size = 100,
+                    Value = PACKAGE_CREATE_DATE_FROM ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PACKAGE_CREATE_DATE_TO",
+                    Size = 100,
+                    Value = PACKAGE_CREATE_DATE_TO ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PACKAGE_DELIVERY_DATE_FROM",
+                    Size = 100,
+                    Value = PACKAGE_DELIVERY_DATE_FROM ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PACKAGE_DELIVERY_DATE_TO",
+                    Size = 100,
+                    Value = PACKAGE_DELIVERY_DATE_TO ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
                 parameterreturnValue,
             };
-            var _ = await _context.SqlQueryAsync<usp_CriteriaSearchBillingAppointmentResult>("EXEC @returnValue = [dbo].[usp_CriteriaSearchBillingAppointment] @BA_NO", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<usp_CriteriaSearchBillingAppointmentResult>("EXEC @returnValue = [dbo].[usp_CriteriaSearchBillingAppointment] @CRITERIA_TYPE, @BA_NO, @BILL_TO_COMPANY, @QUOTE_NO, @INVOICE_NO, @DELIVERY_TYPE, @INVOICE_DATE_FROM, @INVOICE_DATE_TO, @PACKAGE_NO, @PACKAGE_STATUS, @PACKAGE_CREATE_DATE_FROM, @PACKAGE_CREATE_DATE_TO, @PACKAGE_DELIVERY_DATE_FROM, @PACKAGE_DELIVERY_DATE_TO", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
             return _;
         }
 
-        public virtual async Task<List<usp_GetNewRunningNoResult>> usp_GetNewRunningNoAsync(string IsBilling, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<usp_GetNewRunningNoResult>> usp_GetNewRunningNoAsync(string IsBilling, string PackageDeliveryType, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -110,13 +201,20 @@ namespace ALS_BillingAppointmentAPI.DB
                 new SqlParameter
                 {
                     ParameterName = "IsBilling",
-                    Size = 60,
+                    Size = 20,
                     Value = IsBilling ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PackageDeliveryType",
+                    Size = 100,
+                    Value = PackageDeliveryType ?? Convert.DBNull,
                     SqlDbType = System.Data.SqlDbType.NVarChar,
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.SqlQueryAsync<usp_GetNewRunningNoResult>("EXEC @returnValue = [dbo].[usp_GetNewRunningNo] @IsBilling", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<usp_GetNewRunningNoResult>("EXEC @returnValue = [dbo].[usp_GetNewRunningNo] @IsBilling, @PackageDeliveryType", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 

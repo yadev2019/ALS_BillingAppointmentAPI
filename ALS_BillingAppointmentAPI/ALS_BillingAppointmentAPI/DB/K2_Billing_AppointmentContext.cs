@@ -3,8 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
-
 namespace ALS_BillingAppointmentAPI.DB
 {
     public partial class K2_Billing_AppointmentContext : DbContext
@@ -40,8 +38,6 @@ namespace ALS_BillingAppointmentAPI.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.Entity<TbMCreditTerm>(entity =>
             {
                 entity.HasKey(e => e.CreditTermId);
@@ -49,17 +45,17 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_M_Credit_Term");
 
                 entity.Property(e => e.CreditTermId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Credit_Term_ID");
+                    .HasColumnName("Credit_Term_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreditCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Credit_Code");
+                    .HasColumnName("Credit_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CreditTermValue)
-                    .HasMaxLength(10)
                     .HasColumnName("Credit_Term_Value")
-                    .IsFixedLength(true);
+                    .HasMaxLength(10)
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<TbMDeliveryType>(entity =>
@@ -69,16 +65,16 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_M_Delivery_Type");
 
                 entity.Property(e => e.DeliveryTypeId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Delivery_Type_ID");
+                    .HasColumnName("Delivery_Type_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.DeliveryCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Code");
+                    .HasColumnName("Delivery_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Type");
+                    .HasColumnName("Delivery_Type")
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<TbMStatus>(entity =>
@@ -88,24 +84,24 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_M_STATUS");
 
                 entity.Property(e => e.StatusId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("STATUS_ID");
+                    .HasColumnName("STATUS_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Doctype)
-                    .HasMaxLength(50)
-                    .HasColumnName("DOCTYPE");
+                    .HasColumnName("DOCTYPE")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DoctypeSub)
-                    .HasMaxLength(50)
-                    .HasColumnName("DOCTYPE_SUB");
+                    .HasColumnName("DOCTYPE_SUB")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("STATUS_CODE");
+                    .HasColumnName("STATUS_CODE")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusName)
-                    .HasMaxLength(100)
-                    .HasColumnName("STATUS_NAME");
+                    .HasColumnName("STATUS_NAME")
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<TbRBa>(entity =>
@@ -115,70 +111,70 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_R_BA");
 
                 entity.Property(e => e.BaId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("BA_ID");
+                    .HasColumnName("BA_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.BaNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("BA_No");
+                    .HasColumnName("BA_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.DeliveryLab)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Lab");
+                    .HasColumnName("Delivery_Lab")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Type");
+                    .HasColumnName("Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_Cust_Code");
+                    .HasColumnName("Invoice_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceNote)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_Note");
+                    .HasColumnName("Invoice_Note")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.InvoiceToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_To_Address");
+                    .HasColumnName("Invoice_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.InvoiceToComany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_To_Comany");
+                    .HasColumnName("Invoice_To_Comany")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.InvoiceToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_To_Person");
+                    .HasColumnName("Invoice_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_To_Tel");
+                    .HasColumnName("Invoice_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PackageId).HasColumnName("Package_ID");
 
                 entity.Property(e => e.QuoteNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Quote_No");
+                    .HasColumnName("Quote_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ReportToComany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Report_To_Comany");
+                    .HasColumnName("Report_To_Comany")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.ReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Reports_To_Address");
+                    .HasColumnName("Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.ReportsToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("Reports_To_Tel");
+                    .HasColumnName("Reports_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.UpdateBy).HasMaxLength(50);
 
@@ -192,82 +188,82 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_R_CB_BA");
 
                 entity.Property(e => e.CbId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CB_ID");
+                    .HasColumnName("CB_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CbCreateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_CreateBy");
+                    .HasColumnName("CB_CreateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbCreateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_CreateDate");
+                    .HasColumnName("CB_CreateDate")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbDeliveryLab)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Delivery_Lab");
+                    .HasColumnName("CB_Delivery_Lab")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbDeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Delivery_Type");
+                    .HasColumnName("CB_Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_Cust_Code");
+                    .HasColumnName("CB_Invoice_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceNote)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_Note");
+                    .HasColumnName("CB_Invoice_Note")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbInvoiceToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_To_Address");
+                    .HasColumnName("CB_Invoice_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbInvoiceToComany)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_To_Comany");
+                    .HasColumnName("CB_Invoice_To_Comany")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbInvoiceToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_To_Person");
+                    .HasColumnName("CB_Invoice_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_To_Tel");
+                    .HasColumnName("CB_Invoice_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_No");
+                    .HasColumnName("CB_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbPackageId).HasColumnName("CB_Package_ID");
 
                 entity.Property(e => e.CbQuoteNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Quote_No");
+                    .HasColumnName("CB_Quote_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbReportToComany)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Report_To_Comany");
+                    .HasColumnName("CB_Report_To_Comany")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Reports_To_Address");
+                    .HasColumnName("CB_Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbReportsToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Reports_To_Tel");
+                    .HasColumnName("CB_Reports_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbStatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("CB_Status_Code");
+                    .HasColumnName("CB_Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.CbUpdateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_UpdateBy");
+                    .HasColumnName("CB_UpdateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbUpdateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_UpdateDate");
+                    .HasColumnName("CB_UpdateDate")
+                    .HasColumnType("datetime");
             });
 
             modelBuilder.Entity<TbRCbInvoice>(entity =>
@@ -277,58 +273,58 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_R_CB_INVOICE");
 
                 entity.Property(e => e.CbInvoiceId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CB_Invoice_ID");
+                    .HasColumnName("CB_Invoice_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CbBillToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Bill_To_Company");
+                    .HasColumnName("CB_Bill_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Cust_Code");
+                    .HasColumnName("CB_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbDeliveryAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Delivery_Address");
+                    .HasColumnName("CB_Delivery_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbDeliveryToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Delivery_To_Person");
+                    .HasColumnName("CB_Delivery_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbDeliveryToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Delivery_To_Tel");
+                    .HasColumnName("CB_Delivery_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbId).HasColumnName("CB_ID");
 
                 entity.Property(e => e.CbInvoiceDateOverride)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_Invoice_Date_Override");
+                    .HasColumnName("CB_Invoice_Date_Override")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbInvoiceIssueDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_Invoice_Issue_Date");
+                    .HasColumnName("CB_Invoice_Issue_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbInvoiceNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_No");
+                    .HasColumnName("CB_Invoice_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbReportToComany)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Report_To_Comany");
+                    .HasColumnName("CB_Report_To_Comany")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Reports_To_Address");
+                    .HasColumnName("CB_Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbReportsToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Reports_To_Tel");
+                    .HasColumnName("CB_Reports_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbTotalInvoiceAmountIncVat)
-                    .HasColumnType("decimal(18, 2)")
-                    .HasColumnName("CB_Total_Invoice_Amount_Inc_Vat");
+                    .HasColumnName("CB_Total_Invoice_Amount_Inc_Vat")
+                    .HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
@@ -337,8 +333,8 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.Property(e => e.CreditTerm).HasMaxLength(10);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.UpdateBy).HasMaxLength(50);
 
@@ -352,60 +348,60 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_R_CB_PACKAGE");
 
                 entity.Property(e => e.CbPackageId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CB_Package_ID");
+                    .HasColumnName("CB_Package_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CbInvoiceDeliveryLab)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_Delivery_Lab");
+                    .HasColumnName("CB_Invoice_Delivery_Lab")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceDeliveryPhone)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_Delivery_Phone");
+                    .HasColumnName("CB_Invoice_Delivery_Phone")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceDeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_Delivery_Type");
+                    .HasColumnName("CB_Invoice_Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_To_Address");
+                    .HasColumnName("CB_Invoice_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbInvoiceToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_To_Company");
+                    .HasColumnName("CB_Invoice_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbInvoiceToCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_To_Cust_Code");
+                    .HasColumnName("CB_Invoice_To_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_To_Person");
+                    .HasColumnName("CB_Invoice_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbLogisticsDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_Logistics_Delivery_Date");
+                    .HasColumnName("CB_Logistics_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbPackageDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_Package_Delivery_Date");
+                    .HasColumnName("CB_Package_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbPackageDesc)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Package_DESC");
+                    .HasColumnName("CB_Package_DESC")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbPackageName)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Package_Name");
+                    .HasColumnName("CB_Package_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbPackageNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Package_No");
+                    .HasColumnName("CB_Package_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbStatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("CB_Status_Code");
+                    .HasColumnName("CB_Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
@@ -423,14 +419,14 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_R_INVOICE");
 
                 entity.Property(e => e.InvoiceId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Invoice_ID");
+                    .HasColumnName("Invoice_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.BaId).HasColumnName("BA_ID");
 
                 entity.Property(e => e.BillToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Bill_To_Company");
+                    .HasColumnName("Bill_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
@@ -439,52 +435,58 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.Property(e => e.CreditTerm).HasMaxLength(10);
 
                 entity.Property(e => e.CustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Cust_Code");
+                    .HasColumnName("Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Delivery_Address");
+                    .HasColumnName("Delivery_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.DeliveryToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_To_Person");
+                    .HasColumnName("Delivery_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_To_Tel");
+                    .HasColumnName("Delivery_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceDateOverride)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Invoice_Date_Override");
+                    .HasColumnName("Invoice_Date_Override")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.InvoiceIssueDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Invoice_Issue_Date");
+                    .HasColumnName("Invoice_Issue_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.InvoiceNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_No");
+                    .HasColumnName("Invoice_No")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.InvoiceNote).HasColumnName("Invoice_Note");
+
+                entity.Property(e => e.InvoiceProcess)
+                    .HasColumnName("Invoice_Process")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.ReportToComany)
-                    .HasMaxLength(50)
-                    .HasColumnName("Report_To_Comany");
+                    .HasColumnName("Report_To_Comany")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Reports_To_Address");
+                    .HasColumnName("Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.ReportsToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("Reports_To_Tel");
+                    .HasColumnName("Reports_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.TotalInvoiceAmountIncVat)
-                    .HasColumnType("decimal(18, 2)")
-                    .HasColumnName("Total_Invoice_Amount_Inc_Vat");
+                    .HasColumnName("Total_Invoice_Amount_Inc_Vat")
+                    .HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.UpdateBy).HasMaxLength(50);
 
@@ -498,64 +500,64 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_R_PACKAGE");
 
                 entity.Property(e => e.PackageId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Package_ID");
+                    .HasColumnName("Package_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.InvoiceDeliveryLab)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_Delivery_Lab");
+                    .HasColumnName("Invoice_Delivery_Lab")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceDeliveryPhone)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_Delivery_Phone");
+                    .HasColumnName("Invoice_Delivery_Phone")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceDeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_Delivery_Type");
+                    .HasColumnName("Invoice_Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_To_Address");
+                    .HasColumnName("Invoice_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.InvoiceToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_To_Company");
+                    .HasColumnName("Invoice_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.InvoiceToCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_To_Cust_Code");
+                    .HasColumnName("Invoice_To_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_To_Person");
+                    .HasColumnName("Invoice_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.LogisticsDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Logistics_Delivery_Date");
+                    .HasColumnName("Logistics_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackageDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Package_Delivery_Date");
+                    .HasColumnName("Package_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackageDesc)
-                    .HasMaxLength(500)
-                    .HasColumnName("Package_DESC");
+                    .HasColumnName("Package_DESC")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.PackageName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Package_Name");
+                    .HasColumnName("Package_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PackageNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Package_No");
+                    .HasColumnName("Package_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.UpdateBy).HasMaxLength(50);
 
@@ -567,8 +569,8 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_S_BillingAppointmentReportData");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.BillToClientCode).HasMaxLength(50);
 
@@ -577,6 +579,10 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.Property(e => e.CeateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
+
+                entity.Property(e => e.InvoiceDateOverride).HasColumnType("date");
+
+                entity.Property(e => e.InvoiceIssuedDate).HasColumnType("date");
             });
 
             modelBuilder.Entity<TbSBillingData>(entity =>
@@ -584,8 +590,8 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_S_BillingData");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Afenumber).HasColumnName("AFENumber");
 
@@ -601,26 +607,26 @@ namespace ALS_BillingAppointmentAPI.DB
 
                 entity.Property(e => e.InvoiceNumber)
                     .HasMaxLength(10)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.LegalSiteDescriptionLsd).HasColumnName("LegalSiteDescriptionLSD");
 
                 entity.Property(e => e.NavaccountNumber)
-                    .HasMaxLength(10)
                     .HasColumnName("NAVAccountNumber")
-                    .IsFixedLength(true);
+                    .HasMaxLength(10)
+                    .IsFixedLength();
 
                 entity.Property(e => e.Project)
                     .HasMaxLength(10)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.Site)
                     .HasMaxLength(10)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.Workorder)
                     .HasMaxLength(10)
-                    .IsFixedLength(true);
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<TbSConfig>(entity =>
@@ -630,16 +636,16 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_S_CONFIG");
 
                 entity.Property(e => e.ConfigId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Config_ID");
+                    .HasColumnName("Config_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.ConfigName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Config_Name");
+                    .HasColumnName("Config_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ConfigValue)
-                    .HasMaxLength(50)
-                    .HasColumnName("Config_Value");
+                    .HasColumnName("Config_Value")
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<TbSInvoiceHeader>(entity =>
@@ -647,12 +653,14 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToTable("TB_S_InvoiceHeader");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
+
+                entity.Property(e => e.InvoiceIssuedDate).HasColumnType("date");
             });
 
             modelBuilder.Entity<VBillingAppointment>(entity =>
@@ -664,24 +672,24 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.Property(e => e.BaId).HasColumnName("BA_ID");
 
                 entity.Property(e => e.BaNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("BA_No");
+                    .HasColumnName("BA_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.BillToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Bill_To_Company");
+                    .HasColumnName("Bill_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.DeliveryName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Name");
+                    .HasColumnName("Delivery_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Type");
+                    .HasColumnName("Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DiffAddress)
                     .IsRequired()
@@ -689,40 +697,40 @@ namespace ALS_BillingAppointmentAPI.DB
                     .IsUnicode(false);
 
                 entity.Property(e => e.InvoiceCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_Cust_Code");
+                    .HasColumnName("Invoice_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceId).HasColumnName("Invoice_ID");
 
                 entity.Property(e => e.InvoiceNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_No");
+                    .HasColumnName("Invoice_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceNote)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_Note");
+                    .HasColumnName("Invoice_Note")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.InvoiceToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_To_Address");
+                    .HasColumnName("Invoice_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.PackageId).HasColumnName("Package_ID");
 
                 entity.Property(e => e.QuoteNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Quote_No");
+                    .HasColumnName("Quote_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Reports_To_Address");
+                    .HasColumnName("Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.StatusName)
-                    .HasMaxLength(100)
-                    .HasColumnName("STATUS_NAME");
+                    .HasColumnName("STATUS_NAME")
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.UpdateBy).HasMaxLength(50);
 
@@ -736,8 +744,8 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToView("vBillingAppointment_BillToCompany");
 
                 entity.Property(e => e.BillToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Bill_To_Company");
+                    .HasColumnName("Bill_To_Company")
+                    .HasMaxLength(500);
             });
 
             modelBuilder.Entity<VCbBillingAppointment>(entity =>
@@ -747,70 +755,70 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToView("vCB_BillingAppointment");
 
                 entity.Property(e => e.CbBillToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Bill_To_Company");
+                    .HasColumnName("CB_Bill_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbCreateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_CreateBy");
+                    .HasColumnName("CB_CreateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbCreateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_CreateDate");
+                    .HasColumnName("CB_CreateDate")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbDeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Delivery_Type");
+                    .HasColumnName("CB_Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbId).HasColumnName("CB_ID");
 
                 entity.Property(e => e.CbInvoiceCustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_Cust_Code");
+                    .HasColumnName("CB_Invoice_Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceId).HasColumnName("CB_Invoice_ID");
 
                 entity.Property(e => e.CbInvoiceNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Invoice_No");
+                    .HasColumnName("CB_Invoice_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbInvoiceNote)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_Note");
+                    .HasColumnName("CB_Invoice_Note")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbInvoiceToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Invoice_To_Address");
+                    .HasColumnName("CB_Invoice_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_No");
+                    .HasColumnName("CB_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbPackageId).HasColumnName("CB_Package_ID");
 
                 entity.Property(e => e.CbQuoteNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Quote_No");
+                    .HasColumnName("CB_Quote_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("CB_Reports_To_Address");
+                    .HasColumnName("CB_Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CbStatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("CB_Status_Code");
+                    .HasColumnName("CB_Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.CbUpdateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_UpdateBy");
+                    .HasColumnName("CB_UpdateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbUpdateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_UpdateDate");
+                    .HasColumnName("CB_UpdateDate")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.DeliveryName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Name");
+                    .HasColumnName("Delivery_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DiffAddress)
                     .IsRequired()
@@ -818,8 +826,8 @@ namespace ALS_BillingAppointmentAPI.DB
                     .IsUnicode(false);
 
                 entity.Property(e => e.StatusName)
-                    .HasMaxLength(100)
-                    .HasColumnName("STATUS_NAME");
+                    .HasColumnName("STATUS_NAME")
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<VCbPackageList>(entity =>
@@ -829,34 +837,34 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToView("vCB_PackageList");
 
                 entity.Property(e => e.CbLogisticsDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_Logistics_Delivery_Date");
+                    .HasColumnName("CB_Logistics_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbPackageDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CB_Package_Delivery_Date");
+                    .HasColumnName("CB_Package_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.CbPackageId).HasColumnName("CB_Package_ID");
 
                 entity.Property(e => e.CbPackageName)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Package_Name");
+                    .HasColumnName("CB_Package_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbPackageNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("CB_Package_No");
+                    .HasColumnName("CB_Package_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CbStatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("CB_Status_Code");
+                    .HasColumnName("CB_Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.CreateBy).HasMaxLength(50);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.StatusName)
-                    .HasMaxLength(100)
-                    .HasColumnName("STATUS_NAME");
+                    .HasColumnName("STATUS_NAME")
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<VPackage>(entity =>
@@ -866,44 +874,44 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.ToView("vPackage");
 
                 entity.Property(e => e.BaCreateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("BA_CreateBy");
+                    .HasColumnName("BA_CreateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.BaCreateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("BA_CreateDate");
+                    .HasColumnName("BA_CreateDate")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.BaId).HasColumnName("BA_ID");
 
                 entity.Property(e => e.BaNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("BA_No");
+                    .HasColumnName("BA_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.BillToCompany)
-                    .HasMaxLength(500)
-                    .HasColumnName("Bill_To_Company");
+                    .HasColumnName("Bill_To_Company")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.CreditTerm).HasMaxLength(10);
 
                 entity.Property(e => e.CustCode)
-                    .HasMaxLength(50)
-                    .HasColumnName("Cust_Code");
+                    .HasColumnName("Cust_Code")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Delivery_Address");
+                    .HasColumnName("Delivery_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.DeliveryToPerson)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_To_Person");
+                    .HasColumnName("Delivery_To_Person")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_To_Tel");
+                    .HasColumnName("Delivery_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeliveryType)
-                    .HasMaxLength(50)
-                    .HasColumnName("Delivery_Type");
+                    .HasColumnName("Delivery_Type")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DiffAddress)
                     .IsRequired()
@@ -913,84 +921,84 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.Property(e => e.Expr1).HasMaxLength(100);
 
                 entity.Property(e => e.InvCreateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("inv_CreateBy");
+                    .HasColumnName("inv_CreateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvCreateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("inv_CreateDate");
+                    .HasColumnName("inv_CreateDate")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.InvoiceDateOverride)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Invoice_Date_Override");
+                    .HasColumnName("Invoice_Date_Override")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.InvoiceId).HasColumnName("Invoice_ID");
 
                 entity.Property(e => e.InvoiceIssueDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Invoice_Issue_Date");
+                    .HasColumnName("Invoice_Issue_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.InvoiceNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Invoice_No");
+                    .HasColumnName("Invoice_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.InvoiceNote)
-                    .HasMaxLength(500)
-                    .HasColumnName("Invoice_Note");
+                    .HasColumnName("Invoice_Note")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.LogisticsDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Logistics_Delivery_Date");
+                    .HasColumnName("Logistics_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackCreateBy)
-                    .HasMaxLength(50)
-                    .HasColumnName("pack_CreateBy");
+                    .HasColumnName("pack_CreateBy")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PackCreateDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("pack_CreateDate");
+                    .HasColumnName("pack_CreateDate")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackageDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Package_Delivery_Date");
+                    .HasColumnName("Package_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackageId).HasColumnName("Package_ID");
 
                 entity.Property(e => e.PackageName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Package_Name");
+                    .HasColumnName("Package_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PackageNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Package_No");
+                    .HasColumnName("Package_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.QuoteNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Quote_No");
+                    .HasColumnName("Quote_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ReportToComany)
-                    .HasMaxLength(50)
-                    .HasColumnName("Report_To_Comany");
+                    .HasColumnName("Report_To_Comany")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ReportsToAddress)
-                    .HasMaxLength(500)
-                    .HasColumnName("Reports_To_Address");
+                    .HasColumnName("Reports_To_Address")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.ReportsToTel)
-                    .HasMaxLength(50)
-                    .HasColumnName("Reports_To_Tel");
+                    .HasColumnName("Reports_To_Tel")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.StatusName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Status_Name");
+                    .HasColumnName("Status_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.TotalInvoiceAmountIncVat)
-                    .HasColumnType("decimal(18, 2)")
-                    .HasColumnName("Total_Invoice_Amount_Inc_Vat");
+                    .HasColumnName("Total_Invoice_Amount_Inc_Vat")
+                    .HasColumnType("decimal(18, 2)");
             });
 
             modelBuilder.Entity<VPackageList>(entity =>
@@ -1004,30 +1012,30 @@ namespace ALS_BillingAppointmentAPI.DB
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.LogisticsDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Logistics_Delivery_Date");
+                    .HasColumnName("Logistics_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackageDeliveryDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("Package_Delivery_Date");
+                    .HasColumnName("Package_Delivery_Date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PackageId).HasColumnName("Package_ID");
 
                 entity.Property(e => e.PackageName)
-                    .HasMaxLength(50)
-                    .HasColumnName("Package_Name");
+                    .HasColumnName("Package_Name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PackageNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("Package_No");
+                    .HasColumnName("Package_No")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.StatusCode)
-                    .HasMaxLength(10)
-                    .HasColumnName("Status_Code");
+                    .HasColumnName("Status_Code")
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.StatusName)
-                    .HasMaxLength(100)
-                    .HasColumnName("STATUS_NAME");
+                    .HasColumnName("STATUS_NAME")
+                    .HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);

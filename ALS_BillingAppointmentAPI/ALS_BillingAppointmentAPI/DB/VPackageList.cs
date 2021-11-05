@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace ALS_BillingAppointmentAPI.DB
 {
     public partial class VPackageList

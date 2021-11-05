@@ -21,7 +21,7 @@ namespace ALS_BillingAppointmentAPI.Model
         public int InvoiceId { get; set; }
         public string InvoiceNumber { get; set; }
         public string ClientCode { get; set; }
-        public DateTime InvoiceIssuedDate { get; set; }
+        public DateTime? InvoiceIssuedDate { get; set; }
         public double InvoiceAmount { get; set; }
         public string QuoteCode { get; set; }
 

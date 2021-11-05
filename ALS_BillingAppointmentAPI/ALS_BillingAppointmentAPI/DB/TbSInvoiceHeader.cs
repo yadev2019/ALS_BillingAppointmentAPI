@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace ALS_BillingAppointmentAPI.DB
 {
     public partial class TbSInvoiceHeader
@@ -12,7 +10,7 @@ namespace ALS_BillingAppointmentAPI.DB
         public string InvoiceId { get; set; }
         public string InvoiceNumber { get; set; }
         public string ClientCode { get; set; }
-        public string InvoiceIssuedDate { get; set; }
+        public DateTime? InvoiceIssuedDate { get; set; }
         public string InvoiceAmount { get; set; }
         public string QuoteCode { get; set; }
         public DateTime? CreateDate { get; set; }
